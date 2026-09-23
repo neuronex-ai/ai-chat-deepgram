@@ -10,6 +10,7 @@ const statusCopy = {
   connecting: "Conectando",
   ready: "Enviando",
   thinking: "Pensando",
+  tool: "Consultando ferramenta",
   responding: "Respondendo",
   error: "Erro",
 };
@@ -64,8 +65,8 @@ export default function App() {
               <div className="empty-orb" aria-hidden="true" />
               <h2>Converse com GPT-5.6 Luna.</h2>
               <p>
-                Interface mínima, sessão Deepgram sob demanda e arquitetura pronta para tools de
-                GitHub e Supabase.
+                Interface mínima, sessão Deepgram sob demanda e tools GitHub de leitura já
+                conectadas. Supabase entra na próxima etapa.
               </p>
             </div>
           ) : (
