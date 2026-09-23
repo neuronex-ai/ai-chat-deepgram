@@ -11,5 +11,6 @@ export type AgentStatus =
   | "connecting"
   | "ready"
   | "thinking"
+  | "tool"
   | "responding"
   | "error";
