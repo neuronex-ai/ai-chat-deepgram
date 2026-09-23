@@ -1,4 +1,5 @@
 import { AgentSession } from "@deepgram/agents";
+import { agentFunctions } from "../tools/registry";
 import type { ChatMessage } from "./types";
 
 export const DEEPGRAM_MODEL = "gpt-5.6-luna";
@@ -7,7 +8,9 @@ const SYSTEM_PROMPT = `
 You are a concise, capable AI assistant inside a developer chat application.
 Answer in the user's language unless asked otherwise.
 Prefer direct, practical answers.
-Do not claim to have accessed GitHub, Supabase, or external tools unless a real function call result was provided.
+Use tools whenever the user asks for information that a registered tool can retrieve.
+Never claim to have accessed GitHub, Supabase, or any external system unless a real function call result was provided.
+All currently registered GitHub functions are read-only. Never imply that you changed a repository.
 `.trim();
 
 export function createDeepgramSession(history: ChatMessage[]) {
@@ -48,7 +51,7 @@ export function createDeepgramSession(history: ChatMessage[]) {
           reasoning_mode: "low",
         },
         prompt: SYSTEM_PROMPT,
-        functions: [],
+        functions: [...agentFunctions],
       },
       speak: {
         provider: {
